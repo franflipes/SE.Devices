@@ -60,26 +60,7 @@
                             </ControlTemplate>
                         </RadioButton.Template>
                     </RadioButton>
-                    <RadioButton x:Name="BtnBrands" GroupName="MainMenu" Margin="5,5,5,0"  VerticalAlignment="Top" DockPanel.Dock="Top" Click="BtnBrands_Click">
-                        <RadioButton.Template>
-                            <ControlTemplate>
-                                <Grid>
-
-                                    <TextBlock x:Name="Brands" Text="Brands" FontFamily="Segoe UI Semibold" FontSize="24" Height="Auto" Width="Auto" VerticalAlignment="Center" TextAlignment="Left" Foreground="#FF005586" Margin="10,7,10,7"/>
-                                </Grid>
-                            </ControlTemplate>
-                        </RadioButton.Template>
-                    </RadioButton>
-                    <RadioButton x:Name="BtnModels" GroupName="MainMenu" Margin="5,5,5,0"  VerticalAlignment="Top" DockPanel.Dock="Top" Click="BtnModels_OnClick">
-                        <RadioButton.Template>
-                            <ControlTemplate>
-                                <Grid>
-
-                                    <TextBlock x:Name="Models" Text="Models" FontFamily="Segoe UI Semibold" FontSize="24" Height="Auto" Width="Auto" VerticalAlignment="Center" TextAlignment="Left" Foreground="#FF005586" Margin="10,7,10,7"/>
-                                </Grid>
-                            </ControlTemplate>
-                        </RadioButton.Template>
-                    </RadioButton>
+                    
                 </DockPanel>
             </Grid>
 
