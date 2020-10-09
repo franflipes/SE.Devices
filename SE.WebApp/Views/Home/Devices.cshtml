@@ -1,0 +1,72 @@
+﻿@model DeviceListViewModel
+
+@{
+    ViewBag.Title = "Devices List";
+}
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+}
+<div class="card-deck">
+    <h1>Counters</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Type</th>
+                <th scope="col">SN</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Model</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var device in Model.Counters)
+            {
+                <tr>
+                    <td>@device.Type</td>
+                    <td>@device.SerialNumber</td>
+                    <td>@device.Brand</td>
+                    <td>@device.Model</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <h1>Gateways</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">SN</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Model</th>
+                <th scope="col">IP</th>
+                <th scope="col">Port</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var device in Model.Gateways)
+            {
+                <tr>
+                    <td>@device.SerialNumber</td>
+                    <td>@device.Brand</td>
+                    <td>@device.Model</td>
+                    <td>@device.IP</td>
+                    <td>@device.Port</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="card-footer text-center">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary m-1">Device Registration</a>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/js/CustomScript.js"></script>
+}

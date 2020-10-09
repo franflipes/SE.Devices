@@ -1,0 +1,88 @@
+﻿<Window x:Class="SE.UI.WPF.Views.NewDevice"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SE.UI.WPF.Views"
+        mc:Ignorable="d"
+        Title="NewDevice" Height="450" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="4*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <DockPanel VerticalAlignment="Bottom" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" >
+            <Label  Content="Registration Type:"/>
+            <ComboBox SelectionChanged="comboRegistrationType_SelectionChanged" x:Name="comboRegistrationType" Margin="20,0,20,0">
+                <ComboBoxItem IsSelected="True">Counter</ComboBoxItem>
+                <ComboBoxItem>Gateway</ComboBoxItem>
+            </ComboBox>
+        </DockPanel>
+        <StackPanel   x:Name="CounterPanel" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  >
+
+            <DockPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom">
+                <Label Grid.Column="1"  Content="Serial#:"/>
+                <TextBox Text="{Binding Counter.SerialNumber}" Grid.Column="2" Width="150" x:Name="c_SN"/>
+
+            </DockPanel>
+            <DockPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom">
+                <Label Grid.Column="1"  Content="Model:"/>
+                <TextBox Text="{Binding Counter.Model}" Grid.Column="2" Width="150" x:Name="c_Model"/>
+                
+            </DockPanel>
+            <DockPanel VerticalAlignment="Bottom">
+                <Label Grid.Column="1"  Content="Brand:"/>
+                <TextBox Text="{Binding Counter.Brand}" Grid.Column="2" Width="150" x:Name="c_Brand" />
+            </DockPanel>
+            <DockPanel VerticalAlignment="Bottom" >
+                <Label Grid.Column="1"  Content="Counter Type:"/>
+                <ComboBox Text="{Binding Counter.CounterType}" Grid.Column="2" Width="150" SelectionChanged="comboRegistrationType_SelectionChanged" x:Name="comboCounterType">
+                    <ComboBoxItem IsSelected="True">Electricity</ComboBoxItem>
+                    <ComboBoxItem>Water</ComboBoxItem>
+                </ComboBox>
+            </DockPanel>
+        </StackPanel>
+
+        <StackPanel Visibility="Hidden" x:Name="GatewayPanel"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  >
+
+            <DockPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom">
+                <Label Grid.Column="1"  Content="Serial#:"/>
+                <TextBox Text="{Binding Gateway.CounterType}" Grid.Column="2" Width="150" x:Name="g_SN"/>
+
+            </DockPanel>
+            <DockPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom">
+                <Label Grid.Column="1"  Content="Model:"/>
+                <TextBox Text="{Binding Gateway.Model}" Grid.Column="2" Width="150" x:Name="g_Model"/>
+
+            </DockPanel>
+            <DockPanel VerticalAlignment="Bottom">
+                <Label Grid.Column="1"  Content="Brand:"/>
+                <TextBox Text="{Binding Gateway.Brand}" Grid.Column="2" Width="150" x:Name="g_Brand" />
+            </DockPanel>
+            <DockPanel VerticalAlignment="Bottom">
+                <Label Grid.Column="1"  Content="IP:"/>
+                <TextBox Text="{Binding Gateway.IP}" Grid.Column="2" Width="150" x:Name="IP" />
+            </DockPanel>
+            <DockPanel VerticalAlignment="Bottom">
+                <Label Grid.Column="1"  Content="Port:"/>
+                <TextBox Text="{Binding Gateway.Port}" Grid.Column="2" Width="150" x:Name="Port" />
+            </DockPanel>
+            
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" >
+            <Button Height="25" Width="100" x:Name="New" Content="Send command" Click="SendCommandDevice_Click" Margin="0,0,10,0" />
+            
+        </StackPanel>
+
+    </Grid>
+    
+    
+</Window>

@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Counter.json" />
+    <None Remove="Gateway.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Counter.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Gateway.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="NServiceBus" Version="7.4.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SE.Common.UI\SE.Common.UI.csproj" />
+    <ProjectReference Include="..\SE.Devices.Messages\SE.Devices.Messages.csproj" />
+  </ItemGroup>
+
+</Project>

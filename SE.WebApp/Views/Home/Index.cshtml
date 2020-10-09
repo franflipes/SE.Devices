@@ -1,0 +1,33 @@
+﻿@model RegistrationTypeViewModel
+
+@{
+    ViewData["Title"] = "Registration Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div>
+
+    <form enctype="multipart/form-data" asp-controller="home" asp-action="GoRegistration" method="post" class="mt-3">
+        <div class="form-group row">
+            <label asp-for="DeviceType" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <select asp-for="DeviceType" class="custom-select mr-sm-2"
+                        asp-items="Html.GetEnumSelectList<SE.UI.WebApp.Enums.RegistrationType>()">
+                    <option value="">Please Select</option>
+                </select>
+                <span asp-validation-for="DeviceType" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Go To Registration</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>
