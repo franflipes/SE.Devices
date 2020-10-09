@@ -3,9 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:SE.UI.WPF.Views"
+        xmlns:Enum="clr-namespace:SE.UI.WPF.ViewModels"
         mc:Ignorable="d"
         Title="NewDevice" Height="450" Width="400">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
+                            ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Enum:RegistrationType"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
@@ -20,65 +31,76 @@
         </Grid.ColumnDefinitions>
         <DockPanel VerticalAlignment="Bottom" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" >
             <Label  Content="Registration Type:"/>
-            <ComboBox SelectionChanged="comboRegistrationType_SelectionChanged" x:Name="comboRegistrationType" Margin="20,0,20,0">
-                <ComboBoxItem IsSelected="True">Counter</ComboBoxItem>
-                <ComboBoxItem>Gateway</ComboBoxItem>
+            <ComboBox ItemsSource="{Binding Source={StaticResource dataFromEnum}}"
+                  SelectedItem="{Binding Path=RegistrationType}"   x:Name="comboRegistrationType" Margin="20,0,20,0">
+                <!--<ComboBoxItem IsSelected="True">Counter</ComboBoxItem>
+                <ComboBoxItem>Gateway</ComboBoxItem>-->
             </ComboBox>
         </DockPanel>
-        <StackPanel   x:Name="CounterPanel" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  >
+        <StackPanel Visibility="{Binding StackCounterVisibility}"  x:Name="CounterPanel" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"   >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
 
-            <DockPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom">
-                <Label Grid.Column="1"  Content="Serial#:"/>
-                <TextBox Text="{Binding Counter.SerialNumber}" Grid.Column="2" Width="150" x:Name="c_SN"/>
+                <Label Grid.Row="0" Width="150" Grid.Column="0"  Content="Serial#:" Margin="0,5,0,5"/>
+                <TextBox Grid.Row="0" Text="{Binding Counter.SerialNumber}" Grid.Column="1" Width="150"  x:Name="c_SN" Margin="0,5,0,5"/>
 
-            </DockPanel>
-            <DockPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom">
-                <Label Grid.Column="1"  Content="Model:"/>
-                <TextBox Text="{Binding Counter.Model}" Grid.Column="2" Width="150" x:Name="c_Model"/>
-                
-            </DockPanel>
-            <DockPanel VerticalAlignment="Bottom">
-                <Label Grid.Column="1"  Content="Brand:"/>
-                <TextBox Text="{Binding Counter.Brand}" Grid.Column="2" Width="150" x:Name="c_Brand" />
-            </DockPanel>
-            <DockPanel VerticalAlignment="Bottom" >
-                <Label Grid.Column="1"  Content="Counter Type:"/>
-                <ComboBox Text="{Binding Counter.CounterType}" Grid.Column="2" Width="150" SelectionChanged="comboRegistrationType_SelectionChanged" x:Name="comboCounterType">
+                <Label Grid.Row="1" Grid.Column="0"  Content="Model:" Margin="0,5,0,5"/>
+                <TextBox Grid.Row="1" Text="{Binding Counter.Model}" Grid.Column="1" Width="150"  x:Name="c_Model" Margin="0,5,0,5"/>
+
+                <Label Grid.Row="2" Grid.Column="0"  Content="Brand:" Margin="0,5,0,5"/>
+                <TextBox Grid.Row="2" Text="{Binding Counter.Brand}" Grid.Column="1" Width="150"  x:Name="c_Brand" Margin="0,5,0,5"/>
+
+                <Label Grid.Row="3" Grid.Column="0"  Content="Counter Type:" Margin="0,5,0,5"/>
+                <ComboBox Grid.Row="3" Text="{Binding Counter.CounterType}" Grid.Column="1" Width="150" x:Name="comboCounterType" Margin="0,5,0,5">
                     <ComboBoxItem IsSelected="True">Electricity</ComboBoxItem>
                     <ComboBoxItem>Water</ComboBoxItem>
                 </ComboBox>
-            </DockPanel>
+            </Grid>
         </StackPanel>
 
-        <StackPanel Visibility="Hidden" x:Name="GatewayPanel"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  >
+        <StackPanel Visibility="{Binding StackGatewayVisibility}" x:Name="GatewayPanel"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
 
-            <DockPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom">
-                <Label Grid.Column="1"  Content="Serial#:"/>
-                <TextBox Text="{Binding Gateway.CounterType}" Grid.Column="2" Width="150" x:Name="g_SN"/>
+                <Label Grid.Row="0" Grid.Column="0" Margin="0,5,0,5"  Content="Serial#:"/>
+                <TextBox Grid.Row="0" Text="{Binding Gateway.CounterType}" Grid.Column="1" Width="150" Margin="0,5,0,5" x:Name="g_SN"/>
 
-            </DockPanel>
-            <DockPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom">
-                <Label Grid.Column="1"  Content="Model:"/>
-                <TextBox Text="{Binding Gateway.Model}" Grid.Column="2" Width="150" x:Name="g_Model"/>
+                <Label Grid.Row="1" Grid.Column="0" Margin="0,5,0,5"  Content="Model:"/>
+                <TextBox Grid.Row="1" Text="{Binding Gateway.Model}" Grid.Column="1" Width="150" Margin="0,5,0,5" x:Name="g_Model"/>
 
-            </DockPanel>
-            <DockPanel VerticalAlignment="Bottom">
-                <Label Grid.Column="1"  Content="Brand:"/>
-                <TextBox Text="{Binding Gateway.Brand}" Grid.Column="2" Width="150" x:Name="g_Brand" />
-            </DockPanel>
-            <DockPanel VerticalAlignment="Bottom">
-                <Label Grid.Column="1"  Content="IP:"/>
-                <TextBox Text="{Binding Gateway.IP}" Grid.Column="2" Width="150" x:Name="IP" />
-            </DockPanel>
-            <DockPanel VerticalAlignment="Bottom">
-                <Label Grid.Column="1"  Content="Port:"/>
-                <TextBox Text="{Binding Gateway.Port}" Grid.Column="2" Width="150" x:Name="Port" />
-            </DockPanel>
-            
+                <Label Grid.Row="2" Grid.Column="0" Margin="0,5,0,5" Content="Brand:"/>
+                <TextBox Grid.Row="2" Text="{Binding Gateway.Brand}" Grid.Column="1" Width="150" Margin="0,5,0,5" x:Name="g_Brand" />
+
+                <Label Grid.Row="3" Grid.Column="0" Margin="0,5,0,5" Content="IP:"/>
+                <TextBox Grid.Row="3" Text="{Binding Gateway.IP}" Margin="0,5,0,5" Grid.Column="1" Width="150" x:Name="IP" />
+
+                <Label Grid.Row="4" Grid.Column="0" Margin="0,5,0,5" Content="Port:"/>
+                <TextBox Grid.Row="4" Text="{Binding Gateway.Port}" Margin="0,5,0,5" Grid.Column="1" Width="150" x:Name="Port" />
+            </Grid>
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" >
-            <Button Height="25" Width="100" x:Name="New" Content="Send command" Click="SendCommandDevice_Click" Margin="0,0,10,0" />
+            <Button Command="{Binding SendCommand}" Height="25" Width="100" x:Name="New" Content="Send command"  Margin="0,0,10,0" />
             
         </StackPanel>
 
