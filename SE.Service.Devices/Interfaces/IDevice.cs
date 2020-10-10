@@ -5,5 +5,6 @@ namespace SE.Service.Devices.Interfaces
     public interface IDevice
     {
         DeviceType GetDeviceType();
+        bool IsValidDevice();
     }
 }

@@ -113,7 +113,7 @@ namespace SE.Service.Devices.Providers
             {
                 //It´s very annoying that DataAnnotations for table fields does not work in-memory
                 //SerialNumber has [Required] but it´s not working, so I manually check it out and act accordingly
-                if(String.IsNullOrEmpty(model.SerialNumber))
+                if (!CheckValidDevice(model)) 
                     return (-1, null, "Serial Number can not be empty or null");
 
                 //In-memory DB does not allow constraints, so manually constrained
@@ -156,7 +156,7 @@ namespace SE.Service.Devices.Providers
             {
                 //It´s very annoying that DataAnnotations for table fields does not work in-memory
                 //SerialNumber has [Required] but it´s not working, so I manually check it out and act accordingly
-                if (String.IsNullOrEmpty(model.SerialNumber) || String.IsNullOrEmpty(model.IP))
+                if (!CheckValidDevice(model))
                     return (-1, null, "Serial Number or IP Address can not be empty or null");
 
                 //In-memory DB does not allow constraints, so manually constrained
@@ -224,5 +224,11 @@ namespace SE.Service.Devices.Providers
         public IEnumerable<string> GetBrands() => Enum.GetNames(typeof(BrandType));
 
         public IEnumerable<string> GetModels() => Enum.GetNames(typeof(ModelType));
+
+        //use IDevice interface to check vaidation
+        private bool CheckValidDevice(IDevice device)
+        {
+            return device.IsValidDevice() ? true : false;
+        }
     }
 }

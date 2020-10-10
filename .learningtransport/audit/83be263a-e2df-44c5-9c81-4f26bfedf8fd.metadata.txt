@@ -1,0 +1,21 @@
+{
+  "NServiceBus.MessageId": "cda6ae9e-5869-4a0f-885f-ac4f0093dacb",
+  "NServiceBus.MessageIntent": "Publish",
+  "NServiceBus.RelatedTo": "43333519-bd54-4cbc-b626-ac4f0093da06",
+  "NServiceBus.ConversationId": "856b106b-e08b-4821-a5d7-ac4f0093da0a",
+  "NServiceBus.CorrelationId": "43333519-bd54-4cbc-b626-ac4f0093da06",
+  "NServiceBus.ReplyToAddress": "SE.Services.Devices",
+  "NServiceBus.OriginatingMachine": "DESKTOP-F2PTQL0",
+  "NServiceBus.OriginatingEndpoint": "SE.Services.Devices",
+  "$.diagnostics.originating.hostid": "3ce529e192786d1c4a99cf964dbec67f",
+  "NServiceBus.ContentType": "text\/xml",
+  "NServiceBus.EnclosedMessageTypes": "SE.Devices.Messages.DeviceCreated, SE.Devices.Messages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "NServiceBus.Version": "7.4.3",
+  "NServiceBus.TimeSent": "2020-10-09 08:58:19:349172 Z",
+  "NServiceBus.ProcessingStarted": "2020-10-09 08:58:19:637675 Z",
+  "NServiceBus.ProcessingEnded": "2020-10-09 08:58:19:813835 Z",
+  "$.diagnostics.hostid": "096c15d1f9c37347b5537cc54801c7c9",
+  "$.diagnostics.hostdisplayname": "DESKTOP-F2PTQL0",
+  "NServiceBus.ProcessingMachine": "DESKTOP-F2PTQL0",
+  "NServiceBus.ProcessingEndpoint": "SupportTeam"
+}

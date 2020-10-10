@@ -1,0 +1,20 @@
+{
+  "NServiceBus.MessageId": "d28b7d6c-33af-43c8-bd58-ac5000cc4092",
+  "NServiceBus.MessageIntent": "Send",
+  "NServiceBus.ConversationId": "3057beed-f78c-4ec4-85f7-ac5000cc4092",
+  "NServiceBus.CorrelationId": "d28b7d6c-33af-43c8-bd58-ac5000cc4092",
+  "NServiceBus.ReplyToAddress": "SE.UI.WebApp-1",
+  "NServiceBus.OriginatingMachine": "DESKTOP-F2PTQL0",
+  "NServiceBus.OriginatingEndpoint": "SE.UI.WebApp",
+  "$.diagnostics.originating.hostid": "3dce566b556d498d1ce417f0de23eb68",
+  "NServiceBus.ContentType": "text\/xml",
+  "NServiceBus.EnclosedMessageTypes": "SE.Devices.Messages.CreateGateway, SE.Devices.Messages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "NServiceBus.Version": "7.4.3",
+  "NServiceBus.TimeSent": "2020-10-10 12:23:39:583176 Z",
+  "NServiceBus.ProcessingStarted": "2020-10-10 12:23:39:742633 Z",
+  "NServiceBus.ProcessingEnded": "2020-10-10 12:23:39:875787 Z",
+  "$.diagnostics.hostid": "3ce529e192786d1c4a99cf964dbec67f",
+  "$.diagnostics.hostdisplayname": "DESKTOP-F2PTQL0",
+  "NServiceBus.ProcessingMachine": "DESKTOP-F2PTQL0",
+  "NServiceBus.ProcessingEndpoint": "SE.Services.Devices"
+}

@@ -41,6 +41,7 @@ namespace SE.Service.Devices.XUnitTestProject
         }
 
         [Fact]
+        //Non-nominal case, wrong path
         public async Task InsertDeviceExistingUniquenessConstraint()
         {
             //use in-memory isolated db different than the one in Device Service
@@ -69,6 +70,44 @@ namespace SE.Service.Devices.XUnitTestProject
                 var device = await devicesProvider.InsertCounterAsync(counter);
 
                 //Assert the returned tuple
+                Assert.True(device.Id == -1);
+                Assert.Null(device.Device);
+                Assert.NotNull(device.ErrorMessage);
+            }
+        }
+
+        [Fact]
+        //Non-nominal case, wrong path
+        public async Task InsertInvalidDevice()
+        {
+            //use in-memory isolated db different than the one in Device Service
+            var options = new DbContextOptionsBuilder<DevicesDbContext>()
+                .UseInMemoryDatabase(nameof(GetDevicesReturnAllDevices))
+                .Options;
+            using (var dbContext = new DevicesDbContext(options))
+            {
+                //sample data
+                //CreateDevices(dbContext);
+
+                //We need to add the Profiles we want to use in the mapper; 
+                var devicesProfile = new DeviceProfile();
+                var configuration = new MapperConfiguration(cfg => cfg.AddProfile(devicesProfile));
+                var mapper = new Mapper(configuration);
+
+                var devicesProvider = new DevicesProvider(dbContext, null, mapper);
+
+                //same as SN1 in-memory then check Asserts
+                var counter = new Models.Counter()
+                {
+                    //SerialNumber Empty is invalid
+                    SerialNumber = "",
+                    Type = Enums.CounterType.Water
+                };
+
+                var device = await devicesProvider.InsertCounterAsync(counter);
+
+                //Assert the returned tuple
+                //All assertions mean the device is invalid
                 Assert.True(device.Id == -1);
                 Assert.Null(device.Device);
                 Assert.NotNull(device.ErrorMessage);
